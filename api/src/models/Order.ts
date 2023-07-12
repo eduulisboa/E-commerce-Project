@@ -2,6 +2,7 @@ import mongoose, { Document } from 'mongoose'
 
 import { ProductDocument } from './Product'
 
+
 export type OrderDocument = Document & {
     createdAt: Date,
     products: ProductDocument[],
@@ -14,7 +15,7 @@ const OrderSchema = new mongoose.Schema({
         default: Date.now
     },
     products:{
-        type: Number,
+        type: [ProductSchema],
     },
     userId:{
         type: Number,

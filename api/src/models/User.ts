@@ -6,11 +6,14 @@ export type UserDocument = Document & {
 }
 
 const UserSchema = new mongoose.Schema({
-    title:{
+    email:{
         type: String,
+        required: true,
+        unique: true
     },
     password:{
-        type: String
+        type: String,
+        required: true
     }
 })
 
