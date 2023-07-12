@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose'
 
-import { ProductDocument } from './Product'
+import { ProductDocument, ProductSchema } from './Product'
 
 
 export type OrderDocument = Document & {
@@ -14,11 +14,10 @@ const OrderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    products:{
-        type: [ProductSchema],
-    },
+    products: [ProductSchema],
     userId:{
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
 })
 
