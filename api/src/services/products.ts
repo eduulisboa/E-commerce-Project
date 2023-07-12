@@ -9,9 +9,7 @@ export const getProductList = async ():Promise<ProductDocument[]> => {
   return await Product.find().sort({ title: 1})
 }
 
-export const getProductByIdServices = async (
-  productId:string
-):Promise<ProductDocument> => {
+export const getProductByIdServices = async (productId:string):Promise<ProductDocument> => {
   const foundProduct = await Product.findById(productId)
   if(!foundProduct) {
     throw new NotFoundError(`product ${productId} not found`)
@@ -19,9 +17,7 @@ export const getProductByIdServices = async (
   return foundProduct
 }
 
-export const updateProductByIdServices = async (
-  productId:string, newInformation: Partial <ProductDocument>
-):Promise<ProductDocument> => {
+export const updateProductByIdServices = async (productId:string, newInformation: Partial <ProductDocument>):Promise<ProductDocument> => {
   const foundProduct = await Product.findByIdAndUpdate(productId, newInformation, {new: true})
   if(!foundProduct) {
     throw new NotFoundError(`product ${productId} not found`)
@@ -29,13 +25,3 @@ export const updateProductByIdServices = async (
   return foundProduct
 }
 
-export const deleteProductByIdServices = async (
-  productId:string
-):Promise<ProductDocument> => {
-  const foundProduct = await Product.findByIdAndUpdate(productId)
-  if(!foundProduct) {
-    throw new NotFoundError(`product ${productId} not found`)
-  }
-  return foundProduct
-
-}

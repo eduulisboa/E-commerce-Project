@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from 'express'
 
 import Product from '../models/Product'
-import { createProductService, deleteProductByIdServices, getProductByIdServices, getProductList, updateProductByIdServices } from '../services/products'
+import { createProductService, getProductByIdServices, getProductList } from '../services/products'
 
 export const getAllProducts = async (request:Request, response: Response, next:NextFunction) => {
     try {

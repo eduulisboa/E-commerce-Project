@@ -1,10 +1,7 @@
-import Product, {ProductDocument} from "../models/Product";
-import { NotFoundError } from "../helpers/apiError"
+import { OrderDocument } from "./../models/Order";
 
-export const createProductService = async (product: ProductDocument): Promise<ProductDocument> => {
-  return await product.save();
-}
+const createOrder = async (order: OrderDocument): Promise<OrderDocument> => {
+  return await order.save();
+};
 
-export const getProductList = async ():Promise<ProductDocument[]> => {
-  return await Product.find().sort({ title: 1})
-}
+export default { createOrder };
