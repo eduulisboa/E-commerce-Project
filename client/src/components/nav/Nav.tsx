@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Home from '../pages/Home';
+import Home from '../../pages/Home';
 
 const pages = ['Products', 'Favorites', 'Cart'];
 const settings = ['Profile', 'Account', 'My Orders', 'Logout'];

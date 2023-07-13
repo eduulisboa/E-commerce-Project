@@ -1,13 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { Product } from "../../types/product";
+import { CartProduct, Product } from "../../types/product";
 
-type InitialState ={
+type InitialState = {
     products: Product[]
+    filteredProduct: Product[]
+    isLoading: boolean
+    favorites: Product[]
+    cart: CartProduct[]
+    product: null | Product
 }
 
+
 const initialState: InitialState = {
-    products:[]
+    products: [],
+    filteredProduct: [],
+    isLoading: true,
+    favorites: [],
+    cart: [],
+    product: null
+
 }
 
 const productSlice = createSlice({
@@ -16,7 +28,45 @@ const productSlice = createSlice({
     reducers: {
         setProductData: (state, action: PayloadAction<Product[]>) => {
             state.products = action.payload
-        }
+            state.filteredProduct = action.payload
+            state.isLoading = false
+        },
+        searchProducts: (state,action: PayloadAction<string>) =>{
+            const result = state.products.filter((item) => item.title.toLowerCase().includes(action.payload.toLowerCase()))
+            state.filteredProduct = result
+        },
+        getProductDetail: (state, action: PayloadAction<Product> ) =>{
+            const result = action.payload;
+            state.product = result
+        },
+        updateFavoriteList: (state,action: PayloadAction<Product>) => {
+            const result = state.favorites.some((item) => item.id === action.payload.id)
+              if (result) {
+                state.favorites = state.favorites.filter((item) => item.id !== action.payload.id)
+              } else {
+                state.favorites.push(action.payload);
+              }
+        },
+        updateCartList: (state, action: PayloadAction<Product>) => {
+          const result = state.cart.some((item) => item.id === action.payload.id);
+          if (result) {
+            state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+          } else {
+            state.cart.push({...action.payload, quantity: 1});
+          }
+        },
+        incrementQuantity: (state, action: PayloadAction<number>) => {
+          const item = state.cart.find((item) => item.id === action.payload);
+          if (item) {
+            item.quantity += 1;
+          }
+        },
+        decrementQuantity: (state, action: PayloadAction<number>) => {
+          const item = state.cart.find((item) => item.id === action.payload);
+          if (item && item.quantity > 1) {
+            item.quantity -= 1;
+          }
+        },
     }
 })
 
