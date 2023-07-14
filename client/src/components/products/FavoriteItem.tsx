@@ -22,7 +22,7 @@ export default function FavoriteItem({item,cartList}:Prop) {
     dispatch(productActions.updateCartList(item));
   }
   function isCart(item: Product) {
-    return cartList.some((cart) => cart.id === item.id);
+    return cartList.some((cart) => cart._id === item._id);
   }
 
 

@@ -15,7 +15,7 @@ export default function FavoriteList() {
   return (
     <Grid container spacing={3}>
     {favoriteList.map((item) => {
-      return <Grid item lg={3} key={item.id}><FavoriteItem item={item} cartList={cartList} />
+      return <Grid item lg={3} key={item._id}><FavoriteItem item={item} cartList={cartList} />
       </Grid>
     })}
     </Grid>

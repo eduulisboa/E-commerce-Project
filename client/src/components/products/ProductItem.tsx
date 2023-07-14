@@ -24,13 +24,13 @@ export default function ProductItem({ item, favoriteList, cartList }: Prop) {
   }
 
   function isFavorite(item: Product) {
-    return favoriteList.some((favorite) => favorite.id === item.id);
+    return favoriteList.some((favorite) => favorite._id === item._id);
   }
   function setCartProducts(item: Product) {
     dispatch(productActions.updateCartList(item));
   }
   function isCart(item: Product) {
-    return cartList.some((cart) => cart.id === item.id);
+    return cartList.some((cart) => cart._id === item._id);
   }
 
   return (

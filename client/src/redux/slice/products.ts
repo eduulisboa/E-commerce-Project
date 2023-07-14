@@ -40,29 +40,29 @@ const productSlice = createSlice({
             state.product = result
         },
         updateFavoriteList: (state,action: PayloadAction<Product>) => {
-            const result = state.favorites.some((item) => item.id === action.payload.id)
+            const result = state.favorites.some((item) => item._id === action.payload._id)
               if (result) {
-                state.favorites = state.favorites.filter((item) => item.id !== action.payload.id)
+                state.favorites = state.favorites.filter((item) => item._id !== action.payload._id)
               } else {
                 state.favorites.push(action.payload);
               }
         },
         updateCartList: (state, action: PayloadAction<Product>) => {
-          const result = state.cart.some((item) => item.id === action.payload.id);
+          const result = state.cart.some((item) => item._id === action.payload._id);
           if (result) {
-            state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+            state.cart = state.cart.filter((item) => item._id !== action.payload._id);
           } else {
             state.cart.push({...action.payload, quantity: 1});
           }
         },
-        incrementQuantity: (state, action: PayloadAction<number>) => {
-          const item = state.cart.find((item) => item.id === action.payload);
+        incrementQuantity: (state, action: PayloadAction<string>) => {
+          const item = state.cart.find((item) => item._id === action.payload);
           if (item) {
             item.quantity += 1;
           }
         },
-        decrementQuantity: (state, action: PayloadAction<number>) => {
-          const item = state.cart.find((item) => item.id === action.payload);
+        decrementQuantity: (state, action: PayloadAction<string>) => {
+          const item = state.cart.find((item) => item._id === action.payload);
           if (item && item.quantity > 1) {
             item.quantity -= 1;
           }

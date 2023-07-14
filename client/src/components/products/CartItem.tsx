@@ -15,12 +15,12 @@ export default function CartItem({item}:Prop) {
   const dispatch = useDispatch<AppDispatch>()
   
   function handleIncrement() {
-    dispatch(productActions.incrementQuantity(item.id));
+    dispatch(productActions.incrementQuantity(item._id));
   }
 
 
   const handleDecrement = () => {
-    dispatch(productActions.decrementQuantity(item.id));
+    dispatch(productActions.decrementQuantity(item._id));
   };
     
   return (

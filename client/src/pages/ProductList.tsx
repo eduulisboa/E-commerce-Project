@@ -28,7 +28,7 @@ export default function ProductList() {
     <SearchProduct/>
     <Grid container spacing={3}>
     {filteredProduct.map((item) => {
-      return <Grid item lg={3} key={item.id}><ProductItem item={item} favoriteList={favoriteList} cartList={cartList}/>
+      return <Grid item lg={3} key={item._id}><ProductItem item={item} favoriteList={favoriteList} cartList={cartList}/>
       </Grid>
     })}
     </Grid>
