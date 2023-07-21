@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { IconButton } from '@mui/material';
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-import { Product } from '../../types/product'
+import { Product } from '../../types/type'
 import { AppDispatch } from '../../redux/store';
 import { productActions } from '../../redux/slice/products';
 

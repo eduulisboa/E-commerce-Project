@@ -7,3 +7,9 @@ export type Product = {
 export type CartProduct = Product & {
     quantity: number
 }
+export type User = {
+    _id: string,
+    email: string,
+    firstName: string,
+    lastName: string
+}

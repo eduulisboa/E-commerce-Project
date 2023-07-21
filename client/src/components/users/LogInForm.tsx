@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState }  from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,19 +12,47 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { userActions } from '../../redux/slice/user';
 
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const [userInformation, setUserInformation] = useState({
+    email: "",
+    password: "",
+  });
+
+  function getUserEmail(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserInformation({ ...userInformation, email: event.target.value });
+  }
+
+  function getUserPassword(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserInformation({ ...userInformation, password: event.target.value });
+  }
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function onClickHandler() {
+    const endpoint = "http://localhost:8000/users/login";
+
+    axios
+      .post(endpoint, userInformation)
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch(userActions.setUserData(res.data.userData));
+          const userToken = res.data.token;
+          localStorage.setItem("userToken", userToken);
+          navigate(`/users`);
+        }
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -42,29 +70,9 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              name="firstName"
-              autoComplete="firstName"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="lastName"
-              autoFocus
-            />
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -74,6 +82,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={getUserEmail}
             />
             <TextField
               margin="normal"
@@ -84,6 +93,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={getUserPassword}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -95,12 +105,17 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign In
             </Button>
             <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Already have an account? Sign In"}
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>

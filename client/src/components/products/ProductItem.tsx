@@ -7,7 +7,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { productActions } from "../../redux/slice/products";
 import { AppDispatch } from "../../redux/store";
-import { Product } from "../../types/product";
+import { Product } from "../../types/type";
 
 
 type Prop = {
