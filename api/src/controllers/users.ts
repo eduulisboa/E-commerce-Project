@@ -60,8 +60,13 @@ export const logInWithPassword = async (request: Request, response: Response, ne
 };
 
 export const updateUserController = async (request: Request, response: Response, next: NextFunction) => {
+  try {
   const update = request.body;
   const userId = request.params.id;
   const updatedUser = await UserServices.updateUser(userId, update);
-  response.json(updatedUser);
-};
+  response.status(200).json(updatedUser)
+  }
+  catch (error) {
+    next(error)
+  }
+}

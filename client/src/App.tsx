@@ -8,7 +8,9 @@ import FavoriteList from "./pages/FavoriteList";
 import Footer from "./components/footer/Footer";
 import CartList from "./pages/CartList";
 import Home from "./pages/Home";
-import SignIn from "./components/logIn/SignIn";
+import RegisterForm from "./components/users/RegisterForm";
+import LogInForm from "./components/users/LogInForm";
+import UserInformation from "./components/users/UserInformation";
 
 function App() {
   return <div className="App">
@@ -18,7 +20,9 @@ function App() {
       <Route path="/products" element={<ProductList />} ></Route>
       <Route path="/favorites" element={<FavoriteList />} ></Route>
       <Route path="/cart" element={<CartList />} ></Route>
-      <Route path="/sign_in" element={<SignIn />} ></Route>
+      <Route path="/register" element={<RegisterForm />} ></Route>
+      <Route path="/login" element={<LogInForm />} ></Route>
+      <Route path="/users" element={<UserInformation />} />
     </Routes>
     <Footer />
   </div>;

@@ -1,14 +1,14 @@
 import React from 'react'
-
-import { CartProduct } from '../../types/type'
 import { useDispatch } from 'react-redux'
+
+import { ProductOrder } from '../../types/type'
 import { AppDispatch } from '../../redux/store'
 import { productActions } from '../../redux/slice/products'
 
 
 type Prop = {
-   item: CartProduct
-}
+  item: ProductOrder;
+};
 
 export default function CartItem({item}:Prop) {
 

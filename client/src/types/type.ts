@@ -13,3 +13,14 @@ export type User = {
     firstName: string,
     lastName: string
 }
+
+export type ProductOrder = Product & {
+    quantity: number;
+};
+
+export type Order = {
+    _id: string;
+    userId: string;
+    productList: ProductOrder[];
+    createdAt: string;
+};

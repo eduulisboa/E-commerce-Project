@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -41,7 +41,7 @@ export default function RegisterForm() {
   }
 
   function setUserLastName(event: React.ChangeEvent<HTMLInputElement>) {
-    setUserInformation({ ...userInformation, firstName: event.target.value });
+    setUserInformation({ ...userInformation, lastName: event.target.value });
   }
 
   const navigate = useNavigate();
@@ -82,25 +82,21 @@ export default function RegisterForm() {
           <Box component="form" onSubmit={onClickHandler} noValidate sx={{ mt: 1 }}>
           <TextField
               margin="normal"
-              required
               fullWidth
               id="firstName"
               label="First Name"
               name="firstName"
               autoComplete="firstName"
-              autoFocus
               value={userInformation.firstName}
               onChange={setUserFirstName}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               id="lastName"
               label="Last Name"
               name="lastName"
               autoComplete="lastName"
-              autoFocus
               value={userInformation.lastName}
               onChange={setUserLastName}
             />
@@ -112,7 +108,6 @@ export default function RegisterForm() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
               value={userInformation.email}
               onChange={setUserEmail}
             />
@@ -133,7 +128,6 @@ export default function RegisterForm() {
               label="Remember me"
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -143,7 +137,7 @@ export default function RegisterForm() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link>
                   {"Already have an account? Sign In"}
                 </Link>
               </Grid>
