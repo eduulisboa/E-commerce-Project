@@ -47,7 +47,7 @@ export default function RegisterForm() {
   const navigate = useNavigate();
 
   function onClickHandler() {
-    const endpoint = "deploy-7clzd9081-eduulisboa.vercel.app/users";
+    const endpoint = "https://ecommerce-api-two-snowy.vercel.app/users";
 
     axios
       .post(endpoint, userInformation)

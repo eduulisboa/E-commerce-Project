@@ -28,7 +28,7 @@ export default function UserInformation() {
   function onSubmitHandler() {
     const token = localStorage.getItem("userToken");
 
-    const url = `deploy-7clzd9081-eduulisboa.vercel.app/users/${userDetail?._id}`;
+    const url = `https://ecommerce-api-two-snowy.vercel.app/users/${userDetail?._id}`;
     axios
       .put(url, formData, {
         headers: {

@@ -38,7 +38,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
 
   function onClickHandler() {
-    const endpoint = "deploy-7clzd9081-eduulisboa.vercel.app/users/login";
+    const endpoint = "https://ecommerce-api-two-snowy.vercel.app/users/login";
 
     axios
       .post(endpoint, userInformation)
