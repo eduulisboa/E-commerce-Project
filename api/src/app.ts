@@ -12,7 +12,11 @@ import orderRouter from "./routes/orders";
 const app = Express()
 
 app.use(Express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["deploy-7clzd9081-eduulisboa.vercel.app/"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+}))
 app.use(passport.initialize())
 passport.use(jwtStrategy)
 

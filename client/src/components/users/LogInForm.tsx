@@ -38,7 +38,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
 
   function onClickHandler() {
-    const endpoint = "http://localhost:8000/users/login";
+    const endpoint = "deploy-7clzd9081-eduulisboa.vercel.app/users/login";
 
     axios
       .post(endpoint, userInformation)
