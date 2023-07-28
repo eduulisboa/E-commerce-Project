@@ -3,7 +3,7 @@ import axios from "axios"
 import { productActions } from "../slice/products"
 import { AppDispatch } from "../store"
 
-const url = "https://ecommerce-api-two-snowy.vercel.app/products/"
+const url = "http://localhost:8000/products/"
 
 export function fetchProductData() {
     return (dispatch:AppDispatch) => {

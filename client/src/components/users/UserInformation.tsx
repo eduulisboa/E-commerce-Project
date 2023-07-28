@@ -28,7 +28,7 @@ export default function UserInformation() {
   function onSubmitHandler() {
     const token = localStorage.getItem("userToken");
 
-    const url = `https://ecommerce-api-two-snowy.vercel.app/users/${userDetail?._id}`;
+    const url = `http://localhost:8000/users/${userDetail?._id}`;
     axios
       .put(url, formData, {
         headers: {

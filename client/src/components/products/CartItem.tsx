@@ -25,7 +25,7 @@ export default function CartItem({item}:Prop) {
     
   return (
     <div className='cartItem'>
-        <div><img src={item.image} alt={item.title} height="100" width="80"/></div>
+        <div><img src={item.image} alt={item.title} height="200px" width="160px"/></div>
         <div>{item.title}</div>
         <div>${item.price} </div>
         <div>

@@ -38,7 +38,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
 
   function onClickHandler() {
-    const endpoint = "https://ecommerce-api-two-snowy.vercel.app/users/login";
+    const endpoint = "http://localhost:8000/users/login";
 
     axios
       .post(endpoint, userInformation)
@@ -114,7 +114,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

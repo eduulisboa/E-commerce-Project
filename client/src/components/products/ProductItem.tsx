@@ -8,6 +8,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { productActions } from "../../redux/slice/products";
 import { AppDispatch } from "../../redux/store";
 import { Product } from "../../types/type";
+import { useNavigate } from "react-router-dom";
 
 
 type Prop = {
@@ -18,6 +19,12 @@ type Prop = {
 
 export default function ProductItem({ item, favoriteList, cartList }: Prop) {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  function getProductDetail(item: Product) {
+    dispatch(productActions.getProductDetail(item));
+    navigate(`/products/${item._id}`);
+  }
 
   function setFavoriteProducts(item: Product) {
     dispatch(productActions.updateFavoriteList(item));
@@ -35,7 +42,9 @@ export default function ProductItem({ item, favoriteList, cartList }: Prop) {
 
   return (
     <div>
+      <IconButton onClick={() => getProductDetail(item)}>
         <img src={item.image} alt={item.title} height="400" width="300" />
+      </IconButton>
       <div>{item.title} </div>
       <div>${item.price} </div>
       <div>

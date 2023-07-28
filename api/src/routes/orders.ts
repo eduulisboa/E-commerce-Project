@@ -10,14 +10,14 @@ const orderRouter = Router();
 
 orderRouter.post(
   "/:id",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   createOrderController
 );
 
 // get orderList by user id
 orderRouter.get(
   "/:id",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   getOrderListByUserId
 );
 

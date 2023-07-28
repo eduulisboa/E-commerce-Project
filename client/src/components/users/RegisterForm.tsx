@@ -47,7 +47,7 @@ export default function RegisterForm() {
   const navigate = useNavigate();
 
   function onClickHandler() {
-    const endpoint = "https://ecommerce-api-two-snowy.vercel.app/users";
+    const endpoint = "http://localhost:8000/users";
 
     axios
       .post(endpoint, userInformation)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { Route, Routes, } from "react-router-dom";
 
 import "./App.css";
@@ -11,21 +11,28 @@ import Home from "./pages/Home";
 import RegisterForm from "./components/users/RegisterForm";
 import LogInForm from "./components/users/LogInForm";
 import UserInformation from "./components/users/UserInformation";
+import ProductDetail from "./pages/ProductDetail";
+
+
 
 function App() {
-  return <div className="App">
-    <Nav />
-    <Routes>
-      <Route path="/" element={<Home />} ></Route>
-      <Route path="/products" element={<ProductList />} ></Route>
-      <Route path="/favorites" element={<FavoriteList />} ></Route>
-      <Route path="/cart" element={<CartList />} ></Route>
-      <Route path="/register" element={<RegisterForm />} ></Route>
-      <Route path="/login" element={<LogInForm />} ></Route>
-      <Route path="/users" element={<UserInformation />} />
-    </Routes>
-    <Footer />
-  </div>;
+
+  return(
+      <div className="App">
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} ></Route>
+            <Route path="/products" element={<ProductList />} ></Route>
+            <Route path="/products/:id" element={<ProductDetail />} ></Route>
+            <Route path="/favorites" element={<FavoriteList />} ></Route>
+            <Route path="/cart" element={<CartList />} ></Route>
+            <Route path="/register" element={<RegisterForm />} ></Route>
+            <Route path="/login" element={<LogInForm />} ></Route>
+            <Route path="/users" element={<UserInformation />} />
+          </Routes>
+          <Footer />
+      </div>
+  );
 }
 
 export default App;
