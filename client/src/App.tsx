@@ -1,5 +1,4 @@
-import React, { createContext, useMemo, useState } from "react";
-import { Route, Routes, } from "react-router-dom";
+import React,{ Route, Routes, } from "react-router-dom";
 
 import "./App.css";
 import ProductList from "./pages/ProductList";
@@ -12,6 +11,7 @@ import RegisterForm from "./components/users/RegisterForm";
 import LogInForm from "./components/users/LogInForm";
 import UserInformation from "./components/users/UserInformation";
 import ProductDetail from "./pages/ProductDetail";
+import OrderList from "./components/orders/OrderList";
 
 
 
@@ -29,6 +29,7 @@ function App() {
             <Route path="/register" element={<RegisterForm />} ></Route>
             <Route path="/login" element={<LogInForm />} ></Route>
             <Route path="/users" element={<UserInformation />} />
+            <Route path="/order" element={<OrderList />} />
           </Routes>
           <Footer />
       </div>

@@ -15,7 +15,7 @@ export default function OrderList() {
     if (userDetail) {
       dispatch(fetchOrderData(userDetail._id));
     }
-  }, []);
+  }, [dispatch,userDetail]);
   console.log(orderList, "order");
   return (
     <div>

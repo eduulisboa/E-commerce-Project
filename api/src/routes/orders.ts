@@ -14,7 +14,6 @@ orderRouter.post(
   createOrderController
 );
 
-// get orderList by user id
 orderRouter.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
