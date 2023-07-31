@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose'
 
-import { ProductDocument, ProductSchema } from './Product'
+import { ProductDocument } from './Product'
 
 
 export type ProductOrder = ProductDocument & {
@@ -10,33 +10,28 @@ export type ProductOrder = ProductDocument & {
 export type OrderDocument = Document & {
     createdAt: Date,
     products: ProductOrder[],
-    userId: string
+    userId: string,
 }
 
 const ProductOrderSchema = new mongoose.Schema({
     title: { type: String },
-    price: {
-      type: Number,
-    },
-    image: {
-      type: String,
-    },
-    quantity: { type: Number }
+    price: { type: Number },
+    image: { type: String },
+    quantity: { type: Number },
   })
 
 const OrderSchema = new mongoose.Schema({
     createdAT:{
         type: Date,
+        required: true,
         default: Date.now
     },
-    products: [ProductOrderSchema],
+    products: {type:[ProductOrderSchema]} ,
     userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    total: {
-        type: Number,
-      }
+    total: { type: Number }
 })
 
 export default mongoose.model<OrderDocument>("Order", OrderSchema)
