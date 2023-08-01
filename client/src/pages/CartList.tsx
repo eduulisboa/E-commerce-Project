@@ -43,7 +43,7 @@ export default function CartList() {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          alert("pls log in to make order");
+          alert("please log in to make order");
           return;
         }
       });
