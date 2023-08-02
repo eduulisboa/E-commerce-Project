@@ -9,7 +9,7 @@ export function createOrder(userId: string, cartList: Product[]) {
   const token = localStorage.getItem("Access_token");
   return async (dispatch: AppDispatch) => {
     await axios
-      .post(url, cartList, {
+      .post(url,{productList: cartList} , {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -32,5 +32,6 @@ export function fetchOrderData(userId: string) {
         },
       })
       .then((data) => dispatch(orderActions.setOrderList(data.data)))
+      .catch((error) => console.log(error));
   };
 }

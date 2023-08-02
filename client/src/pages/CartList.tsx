@@ -6,9 +6,11 @@ import CartItem from '../components/products/CartItem'
 import axios from 'axios'
 import Button from '@mui/joy/Button';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { useNavigate } from 'react-router-dom'
 
 
 export default function CartList() {
+  const navigate = useNavigate();
 
   const cartList = useSelector((state:RootState) => state.products.cart)
   const userDetail = useSelector(
@@ -23,7 +25,10 @@ export default function CartList() {
   function onClickHandler() {
     const token = localStorage.getItem("userToken");
     const url = `http://localhost:8000/orders/${userDetail?._id}`;
-
+    if (!userDetail) {
+      alert("please login to proceed with checkout!");
+      navigate("/login");
+    } else {
     axios
       .post(
         url,
@@ -48,7 +53,7 @@ export default function CartList() {
         }
       });
   }
-
+  }
   return (
     <div className='cartList'>
       {cartList.map((item)=> {
