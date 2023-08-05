@@ -3,7 +3,7 @@ import axios from "axios"
 import { productActions } from "../slice/products"
 import { AppDispatch } from "../store"
 
-const url = "http://localhost:8000/products/"
+const url = "https://backend-fqad.onrender.com/products/"
 
 export function fetchProductData() {
     return (dispatch:AppDispatch) => {

@@ -24,7 +24,7 @@ export default function CartList() {
 
   function onClickHandler() {
     const token = localStorage.getItem("userToken");
-    const url = `http://localhost:8000/orders/${userDetail?._id}`;
+    const url = `https://backend-fqad.onrender.com/orders/${userDetail?._id}`;
     if (!userDetail) {
       alert("please login to proceed with checkout!");
       navigate("/login");

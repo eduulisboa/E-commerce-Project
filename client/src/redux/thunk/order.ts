@@ -5,7 +5,7 @@ import { Product } from "../../types/type";
 
 
 export function createOrder(userId: string, cartList: Product[]) {
-  const url = `http://localhost:8000/orders/${userId}`;
+  const url = `https://backend-fqad.onrender.com/orders/${userId}`;
   const token = localStorage.getItem("Access_token");
   return async (dispatch: AppDispatch) => {
     await axios
@@ -21,7 +21,7 @@ export function createOrder(userId: string, cartList: Product[]) {
 }
 
 export function fetchOrderData(userId: string) {
-    const url = `http://localhost:8000/orders/${userId}`
+    const url = `https://backend-fqad.onrender.com/orders/${userId}`
     return async (dispatch: AppDispatch) => {
       const token = localStorage.getItem("Access_token");
       await axios

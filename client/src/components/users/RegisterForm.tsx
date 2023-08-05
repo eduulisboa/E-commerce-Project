@@ -47,7 +47,7 @@ export default function RegisterForm() {
   const navigate = useNavigate();
 
   function onClickHandler() {
-    const endpoint = "http://localhost:8000/users";
+    const endpoint = "https://backend-fqad.onrender.com/users";
 
     axios
       .post(endpoint, userInformation)
