@@ -17,6 +17,7 @@ export default function OrderList() {
     }
   }, [dispatch,userDetail]);
   console.log(orderList, "order");
+  console.log(userDetail?._id, "user detail")
   return (
     <div>
       <h1>Your Orders: </h1>
